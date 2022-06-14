@@ -1,0 +1,92 @@
+﻿@model Test.Models.Product
+
+@{
+    ViewData["Title"] = "Product Information " + Model.ProductName ;
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminProducts" asp-action="Index">List of Products</a>
+            <span class="breadcrumb-item active">Products Information: @Model.ProductName</span>
+        </nav>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Products Information: @Model.ProductName</h4>
+        <div class="table-responsive">
+            <table class="product-info-table m-t-20">
+                <tbody>
+                    <tr>
+                        <td>ID:</td>
+                        <td class="text-dark font-weight-semibold">@Model.ProductId</td>
+                    </tr>
+                    <tr>
+                        <td>Product's' Name:</td>
+                        <td>@Model.ProductName</td>
+                    </tr>
+                    <tr>
+                        <td>Description:</td>
+                        <td>@Model.Description</td>
+                    </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>@Model.Price</td>
+                    <tr>
+                        <td>Discount:</td>
+                        <td>@Model.Discount</td>
+                    </tr>
+                    <tr>
+                        <td>Categori:</td>
+                        <td>@Model.Cat.CatName</td>
+                    </tr>
+                    <tr>
+                        <td>Active:</td>
+                        <td>
+                          @if (Model.Active)
+                          {
+
+                            <div class="switch m-r-10">
+                                <input type="checkbox" id="switch-1" checked="">
+                                <label for="switch-1"></label>
+                            </div>
+                                  }
+                                  else
+                                  {
+                                   
+                                <div class="switch m-r-10">
+                                    <input type = "checkbox" id="switch-2"  >
+                                    <label for=" switch-2 "></label>
+                                </div>
+                          }
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date Create:</td>
+                        <td>@Model.DateCreated</td>
+                    </tr>
+                    <tr>
+                        <td>Date edit:</td>
+                        <td>@Model.DateModified</td>
+                    </tr>
+                    <tr>
+                        <td>Title</td>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <td>Avatar</td>
+                        <td>
+                            <img with="200" height="200" src="~/image/product/@Model.Thumb" alt="@Model.Title" />
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

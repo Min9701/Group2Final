@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Test.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Index</h1>
+<div class="col-lg-4 text-right">
+    <button class="btn btn-primary">
+        <i class="anticon anticon-plus-circle m-r-5"></i>
+        <a asp-area="Admin" asp-controller="AdminOrders" asp-action="Create">Add Orders</a>
+    </button>
+</div>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">OrderDate</th>
+                <th scope="col">Payment</th>
+                <th scope="col">Customer</th>
+                <th scope="col">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.OrderDate</th>
+                        <td>@item.PaymentId</td>
+                        <td>@item.Customer.FullName</td>
+                        <td>
+                            <a class="btn btn-primary m-r-5" asp-area="Admin" asp-controller="AdminOrders" asp-action="Details" asp-route-id="@item.OrderId">View</a>
+                            <a class="btn btn-warning m-r-5" asp-area="Admin" asp-controller="AdminOrders" asp-action="Edit" asp-route-id="@item.OrderId">Edit</a>
+                            <a class="btn btn-danger m-r-5" asp-area="Admin" asp-controller="AdminOrders" asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+
+        </tbody>
+    </table>
+</div>
+
